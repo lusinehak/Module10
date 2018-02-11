@@ -29,7 +29,7 @@ public class MailActionsPage extends DriverManager {
     private WebElement goToMail;
 
     @FindBy (xpath =  COMPOSE_MAIL)
-    private WebElement composeEmail;
+    private List<WebElement> composeEmail;
 
     @FindBy (name = SET_RECEIVER)
     private WebElement setReceiver;
@@ -52,15 +52,22 @@ public class MailActionsPage extends DriverManager {
     @FindBy (xpath =  MESSAGE_WINDOW)
     private List<WebElement> messageWindow;
 
-    public MailActionsPage composeAndSaveAsDraft(String receiver, String sbj, String cnt) {
+    public MailActionsPage composeEmail() {
         goToMail.click();
-        composeEmail.click();
+        waitForElement(driver, composeEmail);
+        composeEmail.get(0).click();
         waitForElement(driver, messageWindow);
+        return new MailActionsPage(driver);
+    }
+
+    public void addData(String receiver, String sbj, String cnt) {
         setReceiver.sendKeys(receiver);
         setSubject.sendKeys(sbj);
         content.sendKeys(cnt);
+    }
+
+    public void send() {
         sendEmail.click();
-        return new MailActionsPage(driver);
     }
 
     public MailActionsPage goToFolder(String name) {

@@ -1,6 +1,5 @@
 package tests;
 
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,8 +9,7 @@ import singleton.Logger;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
-public class LoginAndSendEmailTest {
-
+public class LoginTest {
     @Given("^an open browser with accounts.google.com")
     public void start() {
         Logger.getInstance().info("Given: open browser with accounts.google.com");

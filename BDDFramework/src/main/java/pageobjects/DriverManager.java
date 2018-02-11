@@ -16,6 +16,6 @@ public class DriverManager {
         PageFactory.initElements(driver, this);
     }
     protected void waitForElement(WebDriver driver, List<WebElement> element) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElements(element));
+        new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElements(element));
     }
 }
